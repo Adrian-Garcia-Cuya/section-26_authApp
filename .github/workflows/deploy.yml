@@ -27,7 +27,7 @@ jobs:
             source "$NVM_DIR/nvm.sh"
             cd /home/isaias/projects/section-26_authApp
             git pull origin main
-            npm install --production
+            npm install
             npm run build
             rm -rf /var/www/projects/authApp/frontend/*
             cp -r ./dist /var/www/projects/authApp/frontend/
