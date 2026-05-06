@@ -21,7 +21,7 @@ jobs:
           host: ${{secrets.VPS_HOST}}
           username: ${{secrets.VPS_USER}}
           key: ${{secrets.SSH_PRIVATE_KEY}}
-          scripts: |
+          script: |
             cd /home/isaias/projects/section-26_authApp
             git pull origin main
             npm install --production
