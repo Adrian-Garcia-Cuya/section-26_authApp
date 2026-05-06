@@ -23,6 +23,8 @@ jobs:
           username: ${{secrets.VPS_USER}}
           key: ${{secrets.SSH_PRIVATE_KEY}}
           script: |
+            export NVM_DIR="$HOME/.nvm"
+            source "$NVM_DIR/nvm.sh"
             cd /home/isaias/projects/section-26_authApp
             git pull origin main
             npm install --production
