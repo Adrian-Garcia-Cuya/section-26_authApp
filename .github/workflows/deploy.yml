@@ -1,0 +1,31 @@
+name: Deploy de prueba a producción
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+
+    steps:
+      # Step 1
+      - name: Checkout del codigo
+        uses: actions/checkout@v6 #use to dowload the code from the repository
+
+      # Step 2
+      - name: Deploy al VPS
+        uses: appleboy/ssh-action@1.0.3
+        with:
+          host: ${{secrets.VPS_HOST}}
+          username: ${{secrets.VPS_USER}}
+          key: ${{secrets.SSH_PRIVATE_KEY}}
+          scripts: |
+            cd /home/isaias/projects/section-26_authApp
+            git pull origin main
+            npm install --production
+            npm run build
+            rm -rf /var/www/projects/authApp/frontend
+            cp -r ./dist /var/www/projects/authApp/frontend
+            sudo systemctl restart nginx
