@@ -16,7 +16,7 @@ jobs:
 
       # Step 2
       - name: Deploy al VPS
-        uses: appleboy/ssh-action@1.0.3
+        uses: appleboy/ssh-action@v1
         with:
           host: ${{secrets.VPS_HOST}}
           username: ${{secrets.VPS_USER}}
