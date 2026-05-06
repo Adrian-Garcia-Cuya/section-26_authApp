@@ -27,6 +27,6 @@ jobs:
             git pull origin main
             npm install --production
             npm run build
-            rm -rf /var/www/projects/authApp/frontend
-            cp -r ./dist /var/www/projects/authApp/frontend
+            rm -rf /var/www/projects/authApp/frontend/*
+            cp -r ./dist /var/www/projects/authApp/frontend/
             sudo systemctl restart nginx
